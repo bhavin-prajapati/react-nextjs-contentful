@@ -1,30 +1,46 @@
+version: 2.1
+
+jobs:
+  test:
+    docker: # run the steps with Docker
+      - image: circleci/node:8
+    steps:
+      - checkout
+      - restore_cache:
+          key: dependency-cache-{{ checksum "package.json" }}
+      - run:
+          name: Install node_modules
+          command: yarn
+      - run:
+          name: Build
+          command: yarn build
+      - save_cache:
+          key: dependency-cache-{{ checksum "package.json" }}
+          paths:
+            - ./node_modules
+  build:
+    docker: # run the steps with Docker
+      - image: circleci/node:8
+    requires:
+      - test
+    steps:
+      - run:
+          name: Build
+          command: yarn build
+  deploy:
+    docker: # run the steps with Docker
+      - image: circleci/node:8
+    requires:
+      - build
+    steps:
+      - run:
+          name: Deploy
+          command: yarn deploy
+
 workflows:
   version: 2
-  build-n-deploy:
+  build_and_test:
     jobs:
-      - build:
-          docker: # run the steps with Docker
-            - image: circleci/node:8
-          steps:
-            - checkout
-            - restore_cache:
-                key: dependency-cache-{{ checksum "package.json" }}
-            - run:
-                name: Install node_modules
-                command: yarn
-            - run:
-                name: Build
-                command: yarn build
-            - save_cache:
-                key: dependency-cache-{{ checksum "package.json" }}
-                paths:
-                  - ./node_modules
-      - deploy:
-          docker: # run the steps with Docker
-            - image: circleci/node:8
-          requires:
-            - build
-          steps:
-            - run:
-                name: Deploy
-                command: yarn deploy
+      - test
+      - build
+      - deploy

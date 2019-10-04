@@ -29,7 +29,16 @@ jobs:
       - run:
           name: Deploy
           command: yarn deploy
-
+  sync_contentful:
+    docker: # run the steps with Docker
+      - image: circleci/node:8
+    steps:
+      - run:
+          name: Contentful Export
+          command: yarn contentful-export
+      - run:
+          name: Contentful Import
+          command: yarn contentful-import
 workflows:
   version: 2
   build_and_test:
@@ -38,3 +47,7 @@ workflows:
       - build:
           requires:
             - test
+      - deploy:
+          requires:
+            - build
+      - sync_contentful

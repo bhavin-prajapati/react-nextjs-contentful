@@ -1,0 +1,22 @@
+{
+    "plugins": [
+      [
+        "module-resolver", {
+          "root": ["."],
+          "alias": {
+            "styles": "./styles"
+          },
+          "cwd": "babelrc"
+      }],
+      [
+        "wrap-in-js",
+        {
+          "extensions": []
+        }
+      ]
+    ],
+    "presets": [
+      "next/babel"
+    ],
+    "ignore": []
+  }

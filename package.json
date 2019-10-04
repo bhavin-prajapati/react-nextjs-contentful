@@ -1,0 +1,55 @@
+{
+  "name": "nextjs-poc",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "dev": "node server.js",
+    "build": "next build",
+    "now-build": "next build",
+    "start": "NODE_ENV=production node server.js",
+    "contentful-export": "./contentful/contentful-export.sh",
+    "contentful-import": "./contentful/contentful-import.sh"
+  },
+  "repository": {
+    "type": "git",
+    "url": ""
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": ""
+  },
+  "homepage": "",
+  "dependencies": {
+    "autoprefixer": "^8.2.0",
+    "babel-plugin-module-resolver": "^3.1.1",
+    "babel-plugin-wrap-in-js": "^1.1.1",
+    "bootstrap": "^4.3.1",
+    "compression": "^1.7.4",
+    "contentful": "^5.1.3",
+    "contentful-management": "^5.11.2",
+    "dotenv": "^5.0.1",
+    "express": "^4.16.3",
+    "glob": "^7.1.4",
+    "jquery": "^3.4.1",
+    "next": "^5.1.0",
+    "nprogress": "^0.2.0",
+    "path": "^0.12.7",
+    "popper.js": "^1.14.3",
+    "postcss-easy-import": "^3.0.0",
+    "postcss-loader": "^2.1.3",
+    "prop-types": "^15.7.2",
+    "raw-loader": "^0.5.1",
+    "react": "^16.3.1",
+    "react-alice-carousel": "^1.15.3",
+    "react-bootstrap": "^1.0.0-beta.12",
+    "react-dom": "^16.3.1",
+    "sass-loader": "^6.0.7",
+    "styled-components": "^4.4.0"
+  },
+  "devDependencies": {
+    "eslint": "^4.19.1",
+    "eslint-plugin-react": "^7.7.0"
+  }
+}

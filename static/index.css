@@ -1,0 +1,47 @@
+html {
+  height: 100%;
+  font-size: 110%;
+}
+body {
+  background-color: #efefef;
+  height: 100%;
+  margin: 0;
+  overflow-x: hidden;
+  padding: 0;
+}
+
+textarea {
+  resize: none;
+}
+
+a {
+  color: #000;
+  text-decoration: none;
+  line-height: 0;
+}
+
+.ownr-brand-orange {
+  color: #fa4f00;
+}
+
+:root {
+  --ownr-light-purple: #4a3f67;
+  --ownr-dark-purple: #322947;
+  --ownr-brand-dark-purple: #33235b;
+  --ownr-orange: #ff5f15;
+  --ownr-gray: #565656;
+  --priority-notification-color: #ff0371;
+}
+
+/* alice carousel */
+.alice-carousel__dots-item:hover,
+.alice-carousel__dots-item.__active {
+  background-color: var(--ownr-brand-dark-purple) !important;
+}
+
+.alice-carousel__dots-item {
+  width: 0.8rem !important;
+  height: 0.8rem !important;
+  background-color: white !important;
+  border: 1px solid var(--ownr-brand-dark-purple) !important;
+}

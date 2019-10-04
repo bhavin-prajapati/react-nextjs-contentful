@@ -11,9 +11,6 @@ jobs:
       - run:
           name: Install node_modules
           command: yarn
-      - run:
-          name: Build
-          command: yarn build
       - save_cache:
           key: dependency-cache-{{ checksum "package.json" }}
           paths:
@@ -21,8 +18,6 @@ jobs:
   build:
     docker: # run the steps with Docker
       - image: circleci/node:8
-    requires:
-      - test
     steps:
       - run:
           name: Build
@@ -30,8 +25,6 @@ jobs:
   deploy:
     docker: # run the steps with Docker
       - image: circleci/node:8
-    requires:
-      - build
     steps:
       - run:
           name: Deploy
@@ -42,5 +35,6 @@ workflows:
   build_and_test:
     jobs:
       - test
-      - build
-      - deploy
+      - build:
+          requires:
+            - test

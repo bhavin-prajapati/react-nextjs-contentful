@@ -51,4 +51,5 @@ workflows:
       - deploy:
           requires:
             - build
-      - sync_contentful
+      - sync_contentful:
+          type: approval
